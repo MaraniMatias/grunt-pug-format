@@ -3,7 +3,7 @@
 > A grunt wrapper for _Jade-Beautify_ or __Pug-Beautify__.
 
 ## Getting Started
-This plugin requires Grunt `{%= grunt_version %}`
+This plugin usgin [pug-beautify](https://github.com/MaraniMatias/pug-beautify)
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -25,65 +25,25 @@ In your project's Gruntfile, add a section named `pug_beautify` to the data obje
 ```js
 grunt.initConfig({
   pug_beautify: {
+    expand: true,
+    cwd: 'src/views/',
+    src: '*.pug',
+    dest: 'src/views/beautify',
     options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+      fill_tab: false,
+      omit_div: true,
+      tab_size: 2,
+      separator_space: true,
+      omit_empty_lines: true 
+    }
+  }
 });
 ```
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  pug_beautify: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  pug_beautify: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
+* fill_tab - boolean, fill whether tab or space, default true.
+* omit_div - boolean, whether omit 'div' tag, default false.
+* tab_size - number, when 'fill_tab' is false, fill 'tab_size' spaces, default 4.
+* separator_space - boolean, When 'separator_space' is true, the attribute separator is comma, default true.
+* omit_empty_lines - When 'separator_space' is false, delete line blank, default true.
