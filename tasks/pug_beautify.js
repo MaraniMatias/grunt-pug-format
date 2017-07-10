@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         }
       }).map(function(filepath) {
         // Read file source.
-        console.log(filepath,options);
+        //console.log(filepath,options);
         return pugBeautify(grunt.file.read(filepath), options);
       });
 
