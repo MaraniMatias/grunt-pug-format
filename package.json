@@ -1,0 +1,35 @@
+{
+  "name": "grunt-pug-format",
+  "version": "0.0.1",
+  "description": "Simple task for (Pug|Jade) Beautify",
+  "keywords": [
+    "gruntplugin",
+    "jade",
+    "pug",
+    "beautify",
+    "grunt",
+    "formatter"
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:MaraniMatias/grunt-pug-format.git"
+  },
+  "author": {
+    "name": "Marani Matias Ezequiel",
+    "email": "maranimatias@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pug_formatter": "^0.2.2"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-mocha-test": "^0.13.2",
+    "mocha": "^3.4.2"
+  }
+}

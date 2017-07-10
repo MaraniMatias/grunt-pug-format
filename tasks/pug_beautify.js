@@ -6,6 +6,7 @@
  * Licensed under the MIT.
  */
 'use strict';
+var pugBeautify = require('pug_formatter');
 
 module.exports = function(grunt) {
 
@@ -15,8 +16,11 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('pug_beautify', 'Accommodating Pug files.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
+              fill_tab: false,
+            omit_div: false,
+            tab_size: 2,
+            separator_space: true,
+            omit_empty_lines: true 
     });
 
     // Iterate over all specified file groups.
@@ -32,8 +36,9 @@ module.exports = function(grunt) {
         }
       }).map(function(filepath) {
         // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+        //console.log(filepath,options);
+        return pugBeautify(grunt.file.read(filepath), options);
+      });
 
       // Handle options.
       src += options.punctuation;

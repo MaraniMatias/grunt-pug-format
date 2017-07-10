@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'tasks/*.js',
-        '<%= nodeunit.tests %>'
+        'tasks/*.js'
       ],
       options: {
         jshintrc: '.jshintrc'
@@ -30,27 +30,42 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     pug_beautify: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+      'test_false_true_2_sapace_true': {
+        expand: true,
+        cwd: 'test/before/',
+        src: '*.jade',
+        dest: 'tmp/false_true_2_sapace_true',
+        options: { 
+            fill_tab: false,
+            omit_div: true,
+            tab_size: 2,
+            separator_space: true,
+            omit_empty_lines: true 
         }
       },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+      'test_false_true_2_comma_true': {
+        expand: true,
+        cwd: 'test/before/',
+        src: '*.jade',
+        dest: 'tmp/false_true_2_comma_true',
+        options: { 
+            fill_tab: false,
+            omit_div: true,
+            tab_size: 2,
+            separator_space: false,
+            omit_empty_lines: true 
         }
       }
     },
-
-    // Unit tests.
-    nodeunit: {
-      tests: ['test/*_test.js']
+    
+    // Unit tests mocha.
+    mochaTest: {
+      unit: {
+        options: {
+           reporter: 'spec' // spec progress
+        },
+        src: ['./test/*_mocha.js']
+      }
     }
 
   });
@@ -61,11 +76,11 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'pug_beautify', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'pug_beautify']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
