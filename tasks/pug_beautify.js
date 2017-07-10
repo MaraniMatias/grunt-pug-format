@@ -36,12 +36,9 @@ module.exports = function(grunt) {
         }
       }).map(function(filepath) {
         // Read file source.
-        //console.log(filepath,options);
+        console.log(filepath,options);
         return pugBeautify(grunt.file.read(filepath), options);
       });
-
-      // Handle options.
-      src += options.punctuation;
 
       // Write the destination file.
       grunt.file.write(f.dest, src);
