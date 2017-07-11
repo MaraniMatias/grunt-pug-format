@@ -1,6 +1,6 @@
 {
   "name": "grunt-pug-format",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple task for (Pug|Jade) Beautify",
   "keywords": [
     "gruntplugin",
@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "pug_formatter": "^0.2.2"
+    "pug_formatter": "^0.2.3"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
